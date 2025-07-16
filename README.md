@@ -1,96 +1,82 @@
+# 🎓 Student Grade Management System 🚀
 
-# 🎓 FINAL CAPSTONE PROJECT – Student Grade ListApp
+## Overview
 
-This project is a simple yet functional **Student Grades Management Application**, built with Python and designed for **data input, processing, and summary of student grades**. The application allows users to add, view, and analyze student scores across multiple subjects. It also includes file-saving functionality for future reference.
+This Python-based application provides a robust and user-friendly system for managing student grades. Designed for educational institutions, it offers various functionalities for different user roles including teachers, homeroom teachers, and the principal. The system allows for viewing, adding, editing, and deleting student data and their respective subject scores, as well as generating class rankings.
 
-## 📌 Features
+## Key Features ✨
 
-- Input student data interactively via CLI.
-- Support for three subjects: **Bahasa Indonesia**, **Mathematics**, and **English**.
-- Score validation and conversion to grade categories (A, B, C, D, E).
-- Identify subjects the student passed or failed.
-- Option to save data into a CSV file.
-- Clear, user-friendly prompts and outputs.
+  * **Secure Login System:** Differentiated access based on user roles (Teacher, Homeroom Teacher, Principal) with unique NIPs (Employee ID Numbers) and passwords.
+  * **Comprehensive Student Data:** Stores student names, classes, and scores across five core subjects: Mathematics, Science (IPA), Social Studies (IPS), Indonesian Language, and English Language.
+  * **Complete Grade Management:**
+      * View all student data.
+      * View students by specific class.
+      * Add new student records with their initial grades.
+      * Edit existing student's grades for any subject.
+      * Delete student records from the system.
+  * **Quick Class Ranking:** Generate and display the top 3 students in a specific class based on their average scores across all subjects.
+  * **Intuitive Interface:** A simple, menu-driven command-line interface for ease of navigation.
 
-## 🧠 How It Works
+## Getting Started 🚀
 
-The app follows this flow:
+### Prerequisites
 
-1. Prompt user for student name.
-2. Input and validate scores for three subjects.
-3. Automatically convert scores to grades.
-4. Determine passed/failed subjects based on grade thresholds.
-5. Display student performance summary.
-6. Ask if user wants to enter another student.
-7. Ask if data should be saved to a `.csv` file.
+  * Python 3.x installed on your system.
 
-## 🗂️ File Structure
+### Installation
 
-```text
-FINALCAPSTONE.py    # Main Python script containing the CLI-based application logic
-```
+1.  **Download the file:** Save the provided `FINALCAPSTONE.py` file to your local machine.
 
-## 🔧 Requirements
+### Running the Application
 
-This application is built using standard Python libraries and does not require external dependencies.
+1.  Open your terminal or command prompt.
+2.  Navigate to the directory where you saved `FINALCAPSTONE.py`.
+3.  Run the application using the Python interpreter:
+    ```bash
+    python FINALCAPSTONE.py
+    ```
+4.  Follow the on-screen prompts for login and menu navigation.
 
-- Python 3.x
-- Built-in modules: `csv`
+## User Roles and Credentials 🔑
 
-## ▶️ How to Run
+The application supports various user roles, each with specific NIPs (Nomor Induk Pegawai/Employee ID Number) and passwords:
 
-1. Ensure Python is installed (`python --version`)
-2. Open terminal or command prompt.
-3. Navigate to the folder containing `FINALCAPSTONE.py`.
-4. Run the script:
+| NIP  | Role            | Name         | Subject/Class     | Password         |
+| :--- | :-------------- | :----------- | :---------------- | :--------------- |
+| G001 | Teacher         | Bu Ana       | Matematika        | `matematika123`  |
+| G002 | Teacher         | Bu Suratni   | IPS               | `ips123`         |
+| G003 | Teacher         | Pak Budi     | IPA               | `ipa123`         |
+| G004 | Teacher         | Pak Sastra   | Bahasa Indonesia  | `Bindo123`       |
+| G005 | Teacher         | Miss Jolie   | Bahasa Inggris    | `Bing123`        |
+| W010 | Homeroom Teacher| Pak Fajar    | Class 10          | `wali10`         |
+| W011 | Homeroom Teacher| Bu Mar       | Class 11          | `wali11`         |
+| W012 | Homeroom Teacher| Pak Shubuh   | Class 12          | `wali12`         |
+| K001 | Principal       | Dr. Indra    | N/A               | `kepsek123`      |
 
-```bash
-python FINALCAPSTONE.py
-```
+## How to Use 👩‍🏫👨‍🎓
 
-## 📋 Output Example
+1.  **Login:** Enter your NIP and password. If successful, you will be directed to the main menu.
+2.  **Main Menu:**
+      * `1. Tampilkan Semua Siswa` 📚: View all students and their grades.
+      * `2. Tampilkan per Kelas` 🏫: View students and grades filtered by class (10, 11, or 12).
+      * `3. Tambah Data Siswa` ➕: Add a new student record by providing their name, class, and scores for all five subjects.
+      * `4. Edit Data Siswa` ✏️: Update a student's grades. You can leave a field blank if you don't wish to change that specific grade.
+      * `5. Hapus Data Siswa` 🗑️: Remove a student record from the system.
+      * `6. Ranking Kelas` 🏆: See the top 3 students in a specified class based on their average scores.
+      * `0. Keluar` 🚪: Exit the application.
 
-```
-=== STUDENT GRADE SYSTEM ===
-Enter student name: John Doe
+## Code Structure 🏗️
 
-Enter score for Bahasa Indonesia: 80
-Enter score for Mathematics: 70
-Enter score for English: 50
+  * `users`: A dictionary storing user credentials and roles.
+  * `students`: A list of dictionaries, where each dictionary represents a student with their name, class, and subject scores.
+  * `determine_status(nilai)`: A helper function to determine "Lulus" (Pass) or "Tidak Lulus" (Fail) based on a score. (Note: This function is defined but not explicitly used in the main menu flow for displaying status, but could be integrated).
+  * `login()`: Handles user authentication.
+  * `main_menu()`: Displays the main application menu and handles user choices.
+  * `show_all_students()`: Prints a formatted table of all student data.
+  * `show_by_class()`: Filters and prints student data for a specified class.
+  * `add_student()`: Prompts for new student details and adds them to the `students` list.
+  * `edit_student()`: Allows updating grades for an existing student.
+  * `delete_student()`: Removes a student record.
+  * `show_ranking()`: Calculates and displays the top 3 students by average score for a given class.
 
-Student Name: John Doe
-Grades:
-- Bahasa Indonesia: B
-- Mathematics: B
-- English: D
-
-Passed Subjects: Bahasa Indonesia, Mathematics
-Failed Subjects: English
-```
-
-## 💾 Saving to CSV
-
-After data entry, the app gives the option to **save the student record** to a CSV file (`student_grades.csv`). If the file doesn't exist, it will be created. Otherwise, new data will be appended.
-
-## 🎯 Grading System
-
-| Score Range | Grade | Status     |
-|-------------|-------|------------|
-| 85 - 100    | A     | Pass       |
-| 70 - 84     | B     | Pass       |
-| 60 - 69     | C     | Pass       |
-| 50 - 59     | D     | Fail       |
-| 0 - 49      | E     | Fail       |
-
-## 🛠 Future Improvements
-
-- GUI version (e.g. using Tkinter or PyQt)
-- Web version with uploadable CSVs (e.g. Streamlit or Flask)
-- Database integration (e.g. SQLite or PostgreSQL)
-- Summary statistics for all students
-
-## 👨‍💻 Author
-
-This project was developed as part of a **Final Capstone** in a Python learning journey.
-
-If you'd like help extending this into a full web or GUI application, feel free to reach out!
+-----
